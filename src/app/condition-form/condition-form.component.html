@@ -1,1 +1,77 @@
-<p>condition-form works!</p>
+<form [formGroup]="conditionForm">
+
+  <div class="inline">
+    <mat-form-field>
+      <mat-label>City</mat-label>
+      <input matInput formControlName="city">
+      <mat-hint>Ex: Aveiro</mat-hint>
+      <mat-error>Please enter a city</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <p>Parameters:</p>
+
+  <div class="inline">
+    <mat-form-field>
+      <mat-label>Temperature</mat-label>
+      <input type="number" matInput formControlName="temperature">
+      <mat-hint>In degrees Celsius</mat-hint>
+      <mat-error>
+        @if (temperature.hasError('required')) {
+        Please enter a temperature
+        } @else {
+        Between -90 and 57
+        }
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Altitude</mat-label>
+      <input type="number" matInput formControlName="altitude">
+      <mat-hint>In meters</mat-hint>
+      <mat-error>
+        @if (altitude.hasError('required')) {
+        Please enter an altitude
+        } @else {
+        Between -420 and 8848
+        }
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Raining status</mat-label>
+      <input type="number" min="0" max="100" matInput formControlName="rainingStatus">
+      <mat-icon matSuffix>percent</mat-icon>
+      <mat-hint>Probability of precipitation</mat-hint>
+      <mat-error>
+        @if (rainingStatus.hasError('required')) {
+        Please enter a raining status
+        } @else {
+        Enter a valid percentage
+        }
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="inline">
+    <div class="network-power-container">
+      <div class="label-container">
+        <label>Network power</label>
+        <label>{{slider.value}}</label>
+      </div>
+      <mat-slider [max]="5" [min]="1" [step]="1" [showTickMarks]="true">
+        <input matSliderThumb formControlName="networkPower" #slider>
+      </mat-slider>
+    </div>
+  </div>
+
+  <button [disabled]="conditionForm.invalid" mat-button>Send parameters</button>
+
+</form>
