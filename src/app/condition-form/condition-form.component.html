@@ -8,6 +8,7 @@
       <mat-error>Please enter a city</mat-error>
     </mat-form-field>
 
+    <!-- Local format -->
     <mat-form-field>
       <mat-label>Date</mat-label>
       <input matInput [matDatepicker]="picker" formControlName="date">
@@ -72,6 +73,6 @@
     </div>
   </div>
 
-  <button [disabled]="conditionForm.invalid" mat-button>Send parameters</button>
+  <button [disabled]="conditionForm.invalid" mat-button (click)="onClickSend()">Send conditions</button>
 
 </form>
