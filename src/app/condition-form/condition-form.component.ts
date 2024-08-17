@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 import { DateTime } from 'luxon';
-import { Conditions } from '../models/conditions';
+import { Condition } from '../models/condition';
 import { ConditionsService } from '../services/conditions.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -44,7 +44,7 @@ export class ConditionFormComponent {
   constructor(private readonly formBuilder: FormBuilder, private readonly conditionsService: ConditionsService, private readonly snackBar: MatSnackBar) { }
 
   onClickSend() {
-    const conditions: Conditions = {
+    const conditions: Condition = {
       city: this.conditionForm.controls.city.value,
       date: this.conditionForm.controls.date.value.toISODate(),
       temperature: this.conditionForm.controls.temperature.value,

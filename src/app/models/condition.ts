@@ -1,4 +1,4 @@
-export interface Conditions {
+export interface Condition {
     city: string;
     date: string;
     temperature: number;

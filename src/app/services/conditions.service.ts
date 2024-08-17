@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
-import { Conditions } from '../models/conditions';
+import { Condition } from '../models/condition';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,11 @@ export class ConditionsService {
     this.apiUrl = environment.apiUrl;
   }
 
-  sendConditions(conditions: Conditions): Observable<number> {
-    return this.httpClient.post<number>(`${this.apiUrl}/conditions`, conditions);
+  sendConditions(condition: Condition): Observable<number> {
+    return this.httpClient.post<number>(`${this.apiUrl}/conditions`, condition);
+  }
+
+  getConditions(): Observable<Condition[]> {
+    return this.httpClient.get<Condition[]>(`${this.apiUrl}/conditions`)
   }
 }
