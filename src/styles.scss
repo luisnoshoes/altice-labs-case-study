@@ -1,4 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.network-power-1 {
+    background-color: rgb(240, 180, 180) !important; /* Previously network-power-5 */
+}
+
+.network-power-2 {
+    background-color: rgb(240, 210, 180) !important; /* Previously network-power-4 */
+}
+
+.network-power-3 {
+    background-color: rgb(240, 240, 200) !important; /* Previously network-power-3 */
+}
+
+.network-power-4 {
+    background-color: rgb(220, 230, 200) !important; /* Previously network-power-2 */
+}
+
+.network-power-5 {
+    background-color: rgb(200, 230, 200) !important; /* Previously network-power-1 */
+}

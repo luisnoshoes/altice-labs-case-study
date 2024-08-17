@@ -1,5 +1,5 @@
-<div class="side-by-side">
-    <div class="side-container">
+<div class="list-details-container">
+    <div class="list">
         @if (cityOverviewList) {
         <app-city-overview-list [cityOverviewList]="cityOverviewList"></app-city-overview-list>
         } @else {
@@ -8,7 +8,9 @@
         </div>
         }
     </div>
-    <div class="side-container">
-        <app-city-details></app-city-details>
+    @if(selectedCityConditions){
+    <div class="details">
+        <app-city-details [conditions]="selectedCityConditions"></app-city-details>
     </div>
+    }
 </div>

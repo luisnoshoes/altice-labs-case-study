@@ -1,9 +1,9 @@
-.side-by-side {
+.list-details-container {
     height: 100%;
     display: flex;
-    gap: 12px;
+    gap: 24px;
 
-    .side-container {
+    .list {
         height: 100%;
         flex: 1;
 
@@ -13,5 +13,10 @@
             justify-content: center;
             align-items: center;
         }
+    }
+
+    .details {
+        height: 100%;
+        flex: 2;
     }
 }
