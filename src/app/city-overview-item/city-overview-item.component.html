@@ -1,0 +1,26 @@
+<mat-card appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>{{cityOverview.name}}</mat-card-title>
+        <mat-card-subtitle>Latest network power: {{cityOverview.lastNetworkPower}}</mat-card-subtitle>
+        <span class="corner-date">{{cityOverview.lastUpdate.toISODate()}}</span>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="parameters-container">
+            <div class="icon-container">
+                <mat-icon color="primary">thermostat</mat-icon>
+                <span>{{cityOverview.avgTemperature | number: '.1-1'}} ºC</span>
+            </div>
+            <div class="icon-container">
+                <mat-icon color="primary">north</mat-icon>
+                <span>{{cityOverview.avgAltitude | number: '.0-0'}} m</span>
+            </div>
+            <div class="icon-container">
+                <mat-icon color="primary">water_drop</mat-icon>
+                <span>{{cityOverview.avgRainingStatus | number: '.0-0'}} %</span>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button>See details</button>
+    </mat-card-actions>
+</mat-card>

@@ -4,11 +4,12 @@ import { CityOverview } from '../models/city-overview';
 import { Condition } from '../models/condition';
 import { ConditionsService } from '../services/conditions.service';
 import { DateTime } from 'luxon';
+import { CityOverviewItemComponent } from '../city-overview-item/city-overview-item.component';
 
 @Component({
   selector: 'app-condition-list',
   standalone: true,
-  imports: [],
+  imports: [CityOverviewItemComponent],
   templateUrl: './condition-list.component.html',
   styleUrl: './condition-list.component.scss'
 })

@@ -1,0 +1,18 @@
+.corner-date {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px;
+    color:dimgrey;
+}
+
+.parameters-container {
+    margin-top: 10px;
+    display: flex;
+
+    .icon-container {
+        display: flex;
+        align-items: center;
+        flex-basis: 100px;
+    }
+}
