@@ -1,0 +1,17 @@
+.side-by-side {
+    height: 100%;
+    display: flex;
+    gap: 12px;
+
+    .side-container {
+        height: 100%;
+        flex: 1;
+
+        .loading-spinner-container {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

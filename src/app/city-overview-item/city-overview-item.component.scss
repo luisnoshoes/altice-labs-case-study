@@ -1,18 +1,29 @@
-.corner-date {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 15px;
-    color:dimgrey;
-}
+.city-overview-card {
+    cursor: pointer;
 
-.parameters-container {
-    margin-top: 10px;
-    display: flex;
-
-    .icon-container {
+    &:hover {
+        background-color: hsl(0, 0%, 97%);
+    }
+    &.city-selected {
+        background-color: hsl(0, 0%, 90%);
+    }
+    
+    .corner-date {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 15px;
+        color:dimgrey;
+    }
+    
+    .parameters-container {
+        margin-top: 10px;
         display: flex;
-        align-items: center;
-        flex-basis: 100px;
+    
+        .icon-container {
+            display: flex;
+            align-items: center;
+            flex-basis: 100px;
+        }
     }
 }

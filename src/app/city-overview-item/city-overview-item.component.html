@@ -1,4 +1,5 @@
-<mat-card appearance="outlined">
+<mat-card matRipple appearance="outlined" class="city-overview-card" [routerLink]="['./']"
+    [queryParams]="{city: cityOverview.name}" routerLinkActive="city-selected">
     <mat-card-header>
         <mat-card-title>{{cityOverview.name}}</mat-card-title>
         <mat-card-subtitle>Latest network power: {{cityOverview.lastNetworkPower}}</mat-card-subtitle>

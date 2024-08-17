@@ -1,0 +1,14 @@
+<div class="side-by-side">
+    <div class="side-container">
+        @if (cityOverviewList) {
+        <app-city-overview-list [cityOverviewList]="cityOverviewList"></app-city-overview-list>
+        } @else {
+        <div class="loading-spinner-container">
+            <mat-spinner></mat-spinner>
+        </div>
+        }
+    </div>
+    <div class="side-container">
+        <app-city-details></app-city-details>
+    </div>
+</div>

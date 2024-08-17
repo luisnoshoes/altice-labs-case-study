@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { CityOverview } from '../models/city-overview';
+import { Component } from '@angular/core';
 import { Condition } from '../models/condition';
 import { ConditionsService } from '../services/conditions.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { CityOverview } from '../models/city-overview';
 import { DateTime } from 'luxon';
-import { CityOverviewItemComponent } from '../city-overview-item/city-overview-item.component';
+import { CityOverviewListComponent } from '../city-overview-list/city-overview-list.component';
+import { CityDetailsComponent } from '../city-details/city-details.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
-  selector: 'app-condition-list',
+  selector: 'app-condition-overview',
   standalone: true,
-  imports: [CityOverviewItemComponent],
-  templateUrl: './condition-list.component.html',
-  styleUrl: './condition-list.component.scss'
+  imports: [CityOverviewListComponent, CityDetailsComponent, MatProgressSpinnerModule],
+  templateUrl: './condition-overview.component.html',
+  styleUrl: './condition-overview.component.scss'
 })
-export class ConditionListComponent implements OnInit {
+export class ConditionOverviewComponent {
   conditions: Condition[] | undefined;
   cityOverviewList: CityOverview[] | undefined;
 
@@ -24,9 +26,6 @@ export class ConditionListComponent implements OnInit {
       next: (conditions) => {
         this.conditions = conditions;
         this.cityOverviewList = this.getCityOverviewList(conditions);
-
-        console.log(conditions);
-        console.log(this.cityOverviewList)
       },
       error: () => this.snackBar.open("Failed retrieve conditions", 'Close')
     })
