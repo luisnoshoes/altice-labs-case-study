@@ -49,7 +49,6 @@
     <mat-form-field>
       <mat-label>Raining status</mat-label>
       <input type="number" min="0" max="100" matInput formControlName="rainingStatus">
-      <mat-icon matSuffix>percent</mat-icon>
       <mat-hint>Probability of precipitation</mat-hint>
       <mat-error>
         @if (rainingStatus.hasError('required')) {
@@ -73,6 +72,6 @@
     </div>
   </div>
 
-  <button [disabled]="conditionForm.invalid" mat-button (click)="onClickSend()">Send conditions</button>
+  <button mat-button (click)="onClickSend()">Send conditions</button>
 
 </form>

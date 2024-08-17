@@ -44,6 +44,11 @@ export class ConditionFormComponent {
   constructor(private readonly formBuilder: FormBuilder, private readonly conditionsService: ConditionsService, private readonly snackBar: MatSnackBar) { }
 
   onClickSend() {
+    if(this.conditionForm.invalid){
+      this.conditionForm.markAllAsTouched();
+      return;
+    }
+    
     const conditions: Condition = {
       city: this.conditionForm.controls.city.value,
       date: this.conditionForm.controls.date.value.toISODate(),
