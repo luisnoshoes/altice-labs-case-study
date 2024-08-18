@@ -1,7 +1,9 @@
 <mat-toolbar>
   <div class="toolbar-container">
-    <span>{{title}}</span>
-    <button mat-mini-fab [matMenuTriggerFor]="menu">
+    <span class="title">{{title}}</span>
+    <button mat-button [routerLink]="['overview']" routerLinkActive="nav-selected">Overview</button>
+    <button mat-button [routerLink]="['condition-form']" routerLinkActive="nav-selected">Submission</button>
+    <button mat-mini-fab [matMenuTriggerFor]="menu" class="language-button">
       <mat-icon>language</mat-icon>
     </button>
     <mat-menu #menu="matMenu">

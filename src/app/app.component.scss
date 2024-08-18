@@ -7,7 +7,18 @@
 .toolbar-container {
     width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 0 20px;
+
+    .title {
+        margin-right: 24px;
+    }
+
+    .language-button {
+        margin-left: auto;
+    }
+
+    .nav-selected {
+        text-decoration: underline;
+    }
 }
