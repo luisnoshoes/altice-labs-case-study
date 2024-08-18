@@ -74,6 +74,11 @@
     </mat-slider>
   </div>
 
-  <button mat-button (click)="onClickSend()">Send conditions</button>
+  <div class="button-progress-container">
+    <button [disabled]="sendRequestPending" mat-button (click)="onClickSend()">Send conditions</button>
+    @if (sendRequestPending) {
+      <mat-spinner diameter="20"></mat-spinner>
+    }
+  </div>
 
 </form>

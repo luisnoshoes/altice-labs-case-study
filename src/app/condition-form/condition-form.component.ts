@@ -5,17 +5,19 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateModule } from '@ngx-translate/core';
 import { DateTime } from 'luxon';
 import { Condition } from '../models/condition';
 import { ConditionsService } from '../services/conditions.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslateModule } from '@ngx-translate/core';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-condition-form',
   standalone: true,
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatSliderModule, MatDatepickerModule, TranslateModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatSliderModule, MatDatepickerModule, TranslateModule, MatProgressSpinnerModule],
   templateUrl: './condition-form.component.html',
   styleUrl: './condition-form.component.scss'
 })
@@ -48,6 +50,8 @@ export class ConditionFormComponent {
     return this.conditionForm.controls.rainingStatus;
   }
 
+  sendRequestPending = false;
+
   constructor(private readonly formBuilder: FormBuilder, private readonly conditionsService: ConditionsService, private readonly snackBar: MatSnackBar) { }
 
   onClickSend() {
@@ -65,7 +69,10 @@ export class ConditionFormComponent {
       networkPower: this.conditionForm.controls.networkPower.value
     }
 
-    this.conditionsService.sendConditions(conditions).subscribe({
+    this.sendRequestPending = true;
+    this.conditionsService.sendConditions(conditions)
+    .pipe(finalize(() => this.sendRequestPending = false))
+    .subscribe({
       next: () => this.snackBar.open("Succesfully sent conditions", 'Close'),
       error: () => this.snackBar.open("Failed to send conditions", 'Close')
     })
