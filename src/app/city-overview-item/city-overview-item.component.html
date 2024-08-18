@@ -2,7 +2,7 @@
     [queryParams]="{city: cityOverview.name}" routerLinkActive="city-selected">
     <mat-card-header>
         <mat-card-title>{{cityOverview.name}}</mat-card-title>
-        <mat-card-subtitle>Latest network power: {{cityOverview.lastNetworkPower}}</mat-card-subtitle>
+        <mat-card-subtitle>{{'ConditionsOverview.LatestNetworkPower' | translate }}: {{cityOverview.lastNetworkPower}}</mat-card-subtitle>
         <span class="corner-date">{{cityOverview.lastUpdate.toISODate()}}</span>
     </mat-card-header>
     <mat-card-content>

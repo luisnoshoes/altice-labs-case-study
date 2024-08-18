@@ -1,5 +1,14 @@
 <mat-toolbar>
-  <span>altice-labs-case-study</span>
+  <div class="toolbar-container">
+    <span>altice-labs-case-study</span>
+    <button mat-mini-fab [matMenuTriggerFor]="menu">
+      <mat-icon>language</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="onClickLanguage('en')">English</button>
+      <button mat-menu-item (click)="onClickLanguage('pt')">Português</button>
+    </mat-menu>
+  </div>
 </mat-toolbar>
 <div class="container">
   <router-outlet></router-outlet>

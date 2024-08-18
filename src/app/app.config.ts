@@ -1,10 +1,16 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
-import { routes } from './app.routes';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { provideLuxonDateAdapter } from '@angular/material-luxon-adapter';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideLuxonDateAdapter } from '@angular/material-luxon-adapter'
-import { provideHttpClient } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { routes } from './app.routes';
+
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,6 +18,14 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimations(),
     provideLuxonDateAdapter(),
-    provideHttpClient()
+    provideHttpClient(),
+    importProvidersFrom(TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      }
+    })),
   ]
 };
