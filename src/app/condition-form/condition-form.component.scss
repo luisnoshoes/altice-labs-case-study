@@ -1,18 +1,17 @@
-.inline {
-    display: flex;
-    gap: 24px;
-    margin: 12px 0;
-}
+.form {
+    margin: auto;
+    width: 100%;
+    max-width: 900px;
 
-.network-power-container {
-    width: 212px;
-
-    .label-container {
-        box-sizing: border-box;
+    .inline {
         width: 100%;
         display: flex;
-        justify-content: space-between;
-        padding: 0 10px;
+        gap: 24px;
+        margin: 12px 0;
+
+        .grow {
+            flex: 1;
+        }
     }
 
     mat-slider {

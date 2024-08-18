@@ -1,75 +1,77 @@
-<form [formGroup]="conditionForm">
+<form [formGroup]="conditionForm" class="form">
+  <h6>{{'Form.Title' | translate}}</h6>
 
   <div class="inline">
     <mat-form-field>
-      <mat-label>City</mat-label>
+      <mat-label>{{'CityOverview.City' | translate}}</mat-label>
       <input matInput formControlName="city">
       <mat-hint>Ex: Aveiro</mat-hint>
-      <mat-error>Please enter a city</mat-error>
+      <mat-error>{{'Form.Errors.City' | translate}}</mat-error>
     </mat-form-field>
 
-    <!-- Local format -->
-    <mat-form-field>
-      <mat-label>Date</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="date">
+    <mat-form-field class="grow">
+      <mat-label>{{'Condition.Date' | translate}}</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" [max]="maxDate">
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
+      <mat-error>
+        @if (date.hasError('required')) {
+        {{'Form.Errors.Date.Required' | translate}}
+        } @else {
+        {{'Form.Errors.Date.Range' | translate}}
+        }
+      </mat-error>
     </mat-form-field>
   </div>
 
-  <p>Parameters:</p>
+  <p>{{'Form.Parameters' | translate}}</p>
 
   <div class="inline">
-    <mat-form-field>
-      <mat-label>Temperature</mat-label>
+    <mat-form-field class="grow">
+      <mat-label>{{'Condition.Temperature' | translate}}</mat-label>
       <input type="number" matInput formControlName="temperature">
-      <mat-hint>In degrees Celsius</mat-hint>
+      <mat-hint>(ºC)</mat-hint>
       <mat-error>
         @if (temperature.hasError('required')) {
-        Please enter a temperature
+        {{'Form.Errors.Temperature.Required' | translate}}
         } @else {
-        Between -90 and 57
+        {{'Form.Errors.Temperature.Range' | translate}}
         }
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Altitude</mat-label>
+    <mat-form-field class="grow">
+      <mat-label>{{'Condition.Altitude' | translate}}</mat-label>
       <input type="number" matInput formControlName="altitude">
-      <mat-hint>In meters</mat-hint>
+      <mat-hint>(m)</mat-hint>
       <mat-error>
         @if (altitude.hasError('required')) {
-        Please enter an altitude
+        {{'Form.Errors.Altitude.Required' | translate}}
         } @else {
-        Between -420 and 8848
+        {{'Form.Errors.Altitude.Range' | translate}}
         }
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Raining status</mat-label>
+    <mat-form-field class="grow">
+      <mat-label>{{'Condition.RainingStatus' | translate}}</mat-label>
       <input type="number" min="0" max="100" matInput formControlName="rainingStatus">
-      <mat-hint>Probability of precipitation</mat-hint>
+      <mat-hint>(%)</mat-hint>
       <mat-error>
         @if (rainingStatus.hasError('required')) {
-        Please enter a raining status
+        {{'Form.Errors.RainingStatus.Required' | translate}}
         } @else {
-        Enter a valid percentage
+        {{'Form.Errors.RainingStatus.Range' | translate}}
         }
       </mat-error>
     </mat-form-field>
   </div>
 
+  <p>{{'Condition.NetworkPower' | translate}}</p>
   <div class="inline">
-    <div class="network-power-container">
-      <div class="label-container">
-        <label>Network power</label>
-        <label>{{slider.value}}</label>
-      </div>
-      <mat-slider [max]="5" [min]="1" [step]="1" [showTickMarks]="true">
-        <input matSliderThumb formControlName="networkPower" #slider>
-      </mat-slider>
-    </div>
+    <mat-slider [max]="5" [min]="1" [step]="1" [showTickMarks]="true" [discrete]="true">
+      <input matSliderThumb formControlName="networkPower" #slider>
+    </mat-slider>
   </div>
 
   <button mat-button (click)="onClickSend()">Send conditions</button>

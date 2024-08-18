@@ -1,5 +1,37 @@
 {
-    "ConditionsOverview": {
+    "CityOverview": {
+        "City": "Cidade",
         "LatestNetworkPower": "Última potência de rede"
+    },
+    "Condition": {
+        "Date": "Data",
+        "Temperature": "Temperatura",
+        "Altitude": "Altitude",
+        "RainingStatus": "Estado de precipitação",
+        "NetworkPower": "Potência de rede"
+    },
+    "Form": {
+        "Title": "Formulário para submissão",
+        "Parameters": "Parâmetros",
+        "Errors": {
+            "City": "Por favor, insira uma cidade",
+            "Date": {
+                "Required": "Por favor, insira uma data",
+                "Range": "Por favor, insira uma data válida que seja hoje ou anterior"
+            },
+            "Temperature": {
+                "Required": "Por favor, insira uma temperatura",
+                "Range": "Entre -90 e 57"
+            },
+            "Altitude": {
+                "Required": "Por favor, insira uma altitude",
+                "Range": "Entre -420 e 8848"
+            },
+            "RainingStatus": {
+                "Required": "Por favor, insira um estado de precipitação",
+                "Range": "Insira uma percentagem válida"
+            }
+        },
+        "Submit": "Enviar condições"
     }
 }

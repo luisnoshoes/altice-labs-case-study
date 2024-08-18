@@ -1,28 +1,29 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z2">
 
     <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <th mat-header-cell *matHeaderCellDef>{{'Condition.Date' | translate}}</th>
         <td mat-cell *matCellDef="let condition">{{condition.date}}</td>
     </ng-container>
 
     <ng-container matColumnDef="temperature">
-        <th mat-header-cell *matHeaderCellDef>Temperature</th>
+        <th mat-header-cell *matHeaderCellDef>{{'Condition.Temperature' | translate }}</th>
         <td mat-cell *matCellDef="let condition">{{condition.temperature}}</td>
     </ng-container>
 
     <ng-container matColumnDef="altitude">
-        <th mat-header-cell *matHeaderCellDef>Altitude</th>
+        <th mat-header-cell *matHeaderCellDef>{{'Condition.Altitude' | translate }}</th>
         <td mat-cell *matCellDef="let condition">{{condition.altitude}}</td>
     </ng-container>
 
     <ng-container matColumnDef="rainingStatus">
-        <th mat-header-cell *matHeaderCellDef>Raining status</th>
+        <th mat-header-cell *matHeaderCellDef>{{'Condition.RainingStatus' | translate }}</th>
         <td mat-cell *matCellDef="let condition">{{condition.rainingStatus}}</td>
     </ng-container>
 
     <ng-container matColumnDef="networkPower">
-        <th mat-header-cell *matHeaderCellDef>Network power</th>
-        <td mat-cell *matCellDef="let condition" [ngClass]="'network-power-' + condition.networkPower">{{condition.networkPower}}</td>
+        <th mat-header-cell *matHeaderCellDef>{{'Condition.NetworkPower' | translate }}</th>
+        <td mat-cell *matCellDef="let condition" [ngClass]="'network-power-' + condition.networkPower">
+            {{condition.networkPower}}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columns"></tr>

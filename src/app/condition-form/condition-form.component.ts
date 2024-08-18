@@ -10,15 +10,18 @@ import { DateTime } from 'luxon';
 import { Condition } from '../models/condition';
 import { ConditionsService } from '../services/conditions.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-condition-form',
   standalone: true,
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatSliderModule, MatDatepickerModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatSliderModule, MatDatepickerModule, TranslateModule],
   templateUrl: './condition-form.component.html',
   styleUrl: './condition-form.component.scss'
 })
 export class ConditionFormComponent {
+
+  readonly maxDate = DateTime.now();
 
   conditionForm = this.formBuilder.nonNullable.group({
     city: ['', Validators.required],
@@ -28,6 +31,10 @@ export class ConditionFormComponent {
     rainingStatus: [0, [Validators.required, Validators.min(0), Validators.max(100)]],
     networkPower: [5],
   });
+
+  get date() {
+    return this.conditionForm.controls.date;
+  }
 
   get temperature() {
     return this.conditionForm.controls.temperature;
@@ -44,11 +51,11 @@ export class ConditionFormComponent {
   constructor(private readonly formBuilder: FormBuilder, private readonly conditionsService: ConditionsService, private readonly snackBar: MatSnackBar) { }
 
   onClickSend() {
-    if(this.conditionForm.invalid){
+    if (this.conditionForm.invalid) {
       this.conditionForm.markAllAsTouched();
       return;
     }
-    
+
     const conditions: Condition = {
       city: this.conditionForm.controls.city.value,
       date: this.conditionForm.controls.date.value.toISODate(),

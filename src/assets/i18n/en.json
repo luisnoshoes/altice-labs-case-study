@@ -1,5 +1,37 @@
 {
-    "ConditionsOverview": {
+    "CityOverview": {
+        "City": "City",
         "LatestNetworkPower": "Latest network power"
+    },
+    "Condition": {
+        "Date": "Date",
+        "Temperature": "Temperature",
+        "Altitude": "Altitude",
+        "RainingStatus": "Raining status",
+        "NetworkPower": "Network power"
+    },
+    "Form": {
+        "Title": "Submission form",
+        "Parameters": "Parameters",
+        "Errors": {
+            "City": "Please enter a city",
+            "Date": {
+                "Required": "Please enter a date",
+                "Range": "Please enter a valid date that is today or earlier"
+            },
+            "Temperature": {
+                "Required": "Please enter a temperature",
+                "Range": "Between -90 and 57"
+            },
+            "Altitude": {
+                "Required": "Please enter an altitude",
+                "Range": "Between -420 and 8848"
+            },
+            "RainingStatus": {
+                "Required": "Please enter a raining status",
+                "Range": "Enter a valid percentage"
+            }
+        },
+        "Submit": "Send conditions"
     }
 }

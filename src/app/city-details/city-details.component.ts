@@ -3,11 +3,12 @@ import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild } 
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Condition } from '../models/condition';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-city-details',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatPaginatorModule],
+  imports: [CommonModule, MatTableModule, MatPaginatorModule, TranslateModule],
   templateUrl: './city-details.component.html',
   styleUrl: './city-details.component.scss'
 })
