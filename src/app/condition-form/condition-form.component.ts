@@ -73,7 +73,10 @@ export class ConditionFormComponent {
     this.conditionsService.sendConditions(conditions)
     .pipe(finalize(() => this.sendRequestPending = false))
     .subscribe({
-      next: () => this.snackBar.open("Succesfully sent conditions", 'Close'),
+      next: () => {
+        this.snackBar.open("Succesfully sent conditions", 'Close', {duration: 3000});
+        this.conditionForm.reset();
+      },
       error: () => this.snackBar.open("Failed to send conditions", 'Close')
     })
   }

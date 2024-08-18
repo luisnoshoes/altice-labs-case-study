@@ -1,84 +1,88 @@
-<form [formGroup]="conditionForm" class="form">
-  <h6>{{'Form.Title' | translate}}</h6>
+<div class="form-container">
 
-  <div class="inline">
-    <mat-form-field>
-      <mat-label>{{'CityOverview.City' | translate}}</mat-label>
-      <input matInput formControlName="city">
-      <mat-hint>Ex: Aveiro</mat-hint>
-      <mat-error>{{'Form.Errors.City' | translate}}</mat-error>
-    </mat-form-field>
+  <form [formGroup]="conditionForm">
+    <h6>{{'Form.Title' | translate}}</h6>
 
-    <mat-form-field class="grow">
-      <mat-label>{{'Condition.Date' | translate}}</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="date" [max]="maxDate">
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-      <mat-error>
-        @if (date.hasError('required')) {
-        {{'Form.Errors.Date.Required' | translate}}
-        } @else {
-        {{'Form.Errors.Date.Range' | translate}}
-        }
-      </mat-error>
-    </mat-form-field>
-  </div>
+    <div class="inline">
+      <mat-form-field>
+        <mat-label>{{'CityOverview.City' | translate}}</mat-label>
+        <input matInput formControlName="city">
+        <mat-hint>Ex: Aveiro</mat-hint>
+        <mat-error>{{'Form.Errors.City' | translate}}</mat-error>
+      </mat-form-field>
 
-  <p>{{'Form.Parameters' | translate}}</p>
+      <mat-form-field class="grow">
+        <mat-label>{{'Condition.Date' | translate}}</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date" [max]="maxDate">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error>
+          @if (date.hasError('required')) {
+          {{'Form.Errors.Date.Required' | translate}}
+          } @else {
+          {{'Form.Errors.Date.Range' | translate}}
+          }
+        </mat-error>
+      </mat-form-field>
+    </div>
 
-  <div class="inline">
-    <mat-form-field class="grow">
-      <mat-label>{{'Condition.Temperature' | translate}}</mat-label>
-      <input type="number" matInput formControlName="temperature">
-      <mat-hint>(ºC)</mat-hint>
-      <mat-error>
-        @if (temperature.hasError('required')) {
-        {{'Form.Errors.Temperature.Required' | translate}}
-        } @else {
-        {{'Form.Errors.Temperature.Range' | translate}}
-        }
-      </mat-error>
-    </mat-form-field>
+    <p>{{'Form.Parameters' | translate}}</p>
 
-    <mat-form-field class="grow">
-      <mat-label>{{'Condition.Altitude' | translate}}</mat-label>
-      <input type="number" matInput formControlName="altitude">
-      <mat-hint>(m)</mat-hint>
-      <mat-error>
-        @if (altitude.hasError('required')) {
-        {{'Form.Errors.Altitude.Required' | translate}}
-        } @else {
-        {{'Form.Errors.Altitude.Range' | translate}}
-        }
-      </mat-error>
-    </mat-form-field>
+    <div class="inline">
+      <mat-form-field class="grow">
+        <mat-label>{{'Condition.Temperature' | translate}}</mat-label>
+        <input type="number" matInput formControlName="temperature">
+        <mat-hint>(ºC)</mat-hint>
+        <mat-error>
+          @if (temperature.hasError('required')) {
+          {{'Form.Errors.Temperature.Required' | translate}}
+          } @else {
+          {{'Form.Errors.Temperature.Range' | translate}}
+          }
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field class="grow">
-      <mat-label>{{'Condition.RainingStatus' | translate}}</mat-label>
-      <input type="number" min="0" max="100" matInput formControlName="rainingStatus">
-      <mat-hint>(%)</mat-hint>
-      <mat-error>
-        @if (rainingStatus.hasError('required')) {
-        {{'Form.Errors.RainingStatus.Required' | translate}}
-        } @else {
-        {{'Form.Errors.RainingStatus.Range' | translate}}
-        }
-      </mat-error>
-    </mat-form-field>
-  </div>
+      <mat-form-field class="grow">
+        <mat-label>{{'Condition.Altitude' | translate}}</mat-label>
+        <input type="number" matInput formControlName="altitude">
+        <mat-hint>(m)</mat-hint>
+        <mat-error>
+          @if (altitude.hasError('required')) {
+          {{'Form.Errors.Altitude.Required' | translate}}
+          } @else {
+          {{'Form.Errors.Altitude.Range' | translate}}
+          }
+        </mat-error>
+      </mat-form-field>
 
-  <p>{{'Condition.NetworkPower' | translate}}</p>
-  <div class="inline">
-    <mat-slider [max]="5" [min]="1" [step]="1" [showTickMarks]="true" [discrete]="true">
-      <input matSliderThumb formControlName="networkPower" #slider>
-    </mat-slider>
-  </div>
+      <mat-form-field class="grow">
+        <mat-label>{{'Condition.RainingStatus' | translate}}</mat-label>
+        <input type="number" min="0" max="100" matInput formControlName="rainingStatus">
+        <mat-hint>(%)</mat-hint>
+        <mat-error>
+          @if (rainingStatus.hasError('required')) {
+          {{'Form.Errors.RainingStatus.Required' | translate}}
+          } @else {
+          {{'Form.Errors.RainingStatus.Range' | translate}}
+          }
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <p>{{'Condition.NetworkPower' | translate}}</p>
+    <div class="inline">
+      <mat-slider [max]="5" [min]="1" [step]="1" [showTickMarks]="true" [discrete]="true">
+        <input matSliderThumb formControlName="networkPower" #slider>
+      </mat-slider>
+    </div>
+
+  </form>
 
   <div class="button-progress-container">
-    <button [disabled]="sendRequestPending" mat-button (click)="onClickSend()">Send conditions</button>
+    <button [disabled]="sendRequestPending" mat-raised-button (click)="onClickSend()">{{'Form.Submit' | translate}}</button>
     @if (sendRequestPending) {
-      <mat-spinner diameter="20"></mat-spinner>
+    <mat-spinner diameter="20"></mat-spinner>
     }
   </div>
 
-</form>
+</div>
