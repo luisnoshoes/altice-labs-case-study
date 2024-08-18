@@ -62,7 +62,7 @@ export class ConditionFormComponent {
 
     const conditions: Condition = {
       city: this.conditionForm.controls.city.value,
-      date: this.conditionForm.controls.date.value.toISODate(),
+      date: this.conditionForm.controls.date.value,
       temperature: this.conditionForm.controls.temperature.value,
       altitude: this.conditionForm.controls.altitude.value,
       rainingStatus: this.conditionForm.controls.rainingStatus.value,

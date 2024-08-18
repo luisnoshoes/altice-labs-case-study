@@ -1,6 +1,8 @@
+import { DateTime } from "luxon";
+
 export interface Condition {
     city: string;
-    date: string;
+    date: DateTime | string;
     temperature: number;
     altitude: number;
     rainingStatus: number;

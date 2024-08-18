@@ -38,7 +38,7 @@ export class OverviewComponent {
         if (selectedCity && this.conditions!.some((condition) => condition.city === selectedCity)) {
           this.selectedCityConditions = this.conditions!
             .filter((condition) => condition.city === selectedCity)
-            .sort((a, b) => DateTime.fromISO(b.date).toMillis() -  DateTime.fromISO(a.date).toMillis());
+            .sort((a, b) => (b.date as DateTime).toMillis() -  (a.date as DateTime).toMillis());
         }
       })
     ).subscribe({
@@ -54,8 +54,8 @@ export class OverviewComponent {
     for (const city of cities) {
       const cityConditions = conditions.filter((condition) => condition.city === city)
 
-      const lastUpdate = DateTime.max(...cityConditions.map((condition) => DateTime.fromISO(condition.date)))
-      const lastNetworkPower = cityConditions.find((condition) => condition.date === lastUpdate.toISODate())!.networkPower;
+      const lastUpdate = DateTime.max(...cityConditions.map((condition) => condition.date as DateTime))
+      const lastNetworkPower = cityConditions.find((condition) => +condition.date === +lastUpdate)!.networkPower;
 
       const cityOverview: CityOverview = {
         name: city,
