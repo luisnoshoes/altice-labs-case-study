@@ -1,7 +1,13 @@
 <div class="list-details-container">
     <div class="list">
         @if (cityOverviewList) {
-        <app-city-overview-list [cityOverviewList]="cityOverviewList"></app-city-overview-list>
+            <div class="list-viewport">
+                @for (cityOverview of cityOverviewList; track cityOverview.name) {
+                <app-city-overview-item [cityOverview]="cityOverview"></app-city-overview-item>
+                } @empty {
+                <span class="no-data">No data available</span>
+                }
+            </div>
         } @else {
         <div class="loading-spinner-container">
             <mat-spinner></mat-spinner>

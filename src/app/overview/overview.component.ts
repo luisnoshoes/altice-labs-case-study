@@ -1,23 +1,23 @@
 import { Component } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
+import { DateTime } from 'luxon';
+import { switchMap, tap } from 'rxjs';
+import { CityDetailsComponent } from '../city-details/city-details.component';
+import { CityOverviewItemComponent } from '../city-overview-item/city-overview-item.component';
+import { CityOverview } from '../models/city-overview';
 import { Condition } from '../models/condition';
 import { ConditionsService } from '../services/conditions.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { CityOverview } from '../models/city-overview';
-import { DateTime } from 'luxon';
-import { CityOverviewListComponent } from '../city-overview-list/city-overview-list.component';
-import { CityDetailsComponent } from '../city-details/city-details.component';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ActivatedRoute } from '@angular/router';
-import { catchError, pipe, switchMap, tap } from 'rxjs';
 
 @Component({
-  selector: 'app-condition-overview',
+  selector: 'app-overview',
   standalone: true,
-  imports: [CityOverviewListComponent, CityDetailsComponent, MatProgressSpinnerModule],
-  templateUrl: './condition-overview.component.html',
-  styleUrl: './condition-overview.component.scss'
+  imports: [CityOverviewItemComponent, CityDetailsComponent, MatProgressSpinnerModule],
+  templateUrl: './overview.component.html',
+  styleUrl: './overview.component.scss'
 })
-export class ConditionOverviewComponent {
+export class OverviewComponent {
   conditions: Condition[] | undefined;
 
   cityOverviewList: CityOverview[] | undefined;
@@ -35,7 +35,7 @@ export class ConditionOverviewComponent {
       tap((paramMap) => {
         const selectedCity = paramMap.get('city');
 
-        if (selectedCity) {
+        if (selectedCity && this.conditions!.some((condition) => condition.city === selectedCity)) {
           this.selectedCityConditions = this.conditions!
             .filter((condition) => condition.city === selectedCity)
             .sort((a, b) => DateTime.fromISO(b.date).toMillis() -  DateTime.fromISO(a.date).toMillis());

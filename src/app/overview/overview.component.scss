@@ -7,11 +7,23 @@
         height: 100%;
         flex: 1;
 
+        .list-viewport {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            overflow: auto;
+        }
+
         .loading-spinner-container {
             height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .no-data {
+            text-align: center;
         }
     }
 
