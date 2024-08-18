@@ -2,7 +2,7 @@
 
     <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef>{{'Condition.Date' | translate}}</th>
-        <td mat-cell *matCellDef="let condition">{{condition.date}}</td>
+        <td mat-cell *matCellDef="let condition">{{condition.date.toISODate()}}</td>
     </ng-container>
 
     <ng-container matColumnDef="temperature">
