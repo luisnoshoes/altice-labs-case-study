@@ -1,14 +1,14 @@
 <mat-toolbar>
   <div class="toolbar-container">
     <span class="title">{{title}}</span>
-    <button mat-button [routerLink]="['overview']" routerLinkActive="nav-selected">Overview</button>
-    <button mat-button [routerLink]="['condition-form']" routerLinkActive="nav-selected">Submission</button>
+    <button mat-button [routerLink]="['overview']" routerLinkActive="nav-selected">{{'Nav.Overview' | translate}}</button>
+    <button mat-button [routerLink]="['condition-form']" routerLinkActive="nav-selected">{{'Nav.Submission' | translate}}</button>
     <button mat-mini-fab [matMenuTriggerFor]="menu" class="language-button">
       <mat-icon>language</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="onClickLanguage('en')">English</button>
-      <button mat-menu-item (click)="onClickLanguage('pt')">Português</button>
+      <button mat-menu-item (click)="onClickLanguage('en')" [ngClass]="{'lang-selected': language === 'en'}">English</button>
+      <button mat-menu-item (click)="onClickLanguage('pt')" [ngClass]="{'lang-selected': language === 'pt'}">Português</button>
     </mat-menu>
   </div>
 </mat-toolbar>

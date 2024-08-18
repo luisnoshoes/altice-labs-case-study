@@ -1,4 +1,8 @@
 {
+    "Nav": {
+        "Overview": "Visão geral",
+        "Submission": "Submissão"
+    },
     "CityOverview": {
         "City": "Cidade",
         "LatestNetworkPower": "Última potência de rede"

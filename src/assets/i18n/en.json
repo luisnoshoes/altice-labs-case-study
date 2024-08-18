@@ -1,4 +1,8 @@
 {
+    "Nav": {
+        "Overview": "Overview",
+        "Submission": "Submission"
+    },
     "CityOverview": {
         "City": "City",
         "LatestNetworkPower": "Latest network power"
