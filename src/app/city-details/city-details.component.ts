@@ -4,11 +4,12 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Condition } from '../models/condition';
 import { TranslateModule } from '@ngx-translate/core';
+import { CityChartComponent } from '../city-chart/city-chart.component';
 
 @Component({
   selector: 'app-city-details',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatPaginatorModule, TranslateModule],
+  imports: [CommonModule, MatTableModule, MatPaginatorModule, TranslateModule, CityChartComponent],
   templateUrl: './city-details.component.html',
   styleUrl: './city-details.component.scss'
 })
